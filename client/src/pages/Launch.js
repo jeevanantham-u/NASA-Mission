@@ -10,7 +10,7 @@ const Launch = props => {
   }, [props.planets]);
 
   const today = new Date().toISOString().split("T")[0];
-  console.log(today);
+  // console.log(today);
 
   return <Appear id="launch" animate show={props.entered}>
     <Paragraph>Schedule a mission launch for interstellar travel to one of the Kepler Exoplanets.</Paragraph>
