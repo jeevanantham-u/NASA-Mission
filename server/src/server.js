@@ -9,7 +9,7 @@ const MONGO_URL = "mongodb+srv://jeeva:2jRXMp5G0OXTUm3c@nasacluster.kgjz8.mongod
 
 const server = http.createServer(app);
 
-mongoose.connection.on('open', () => console.log('open'));
+mongoose.connection.on('open', () => console.log('MongoDB Atlas connected'));
 mongoose.connection.on('error', (err) => console.error(err));
 
 async function startServer() {
