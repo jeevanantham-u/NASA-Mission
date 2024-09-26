@@ -32,11 +32,9 @@ async function httpSubmitLaunch(launch) {
 
 async function httpAbortLaunch(id) {
   try {
-    const response = await fetch(`${API_URL}/launches/${id}`,{
+    return await fetch(`${API_URL}/launches/${id}`,{
       method: 'delete',
     });
-    const fetchedLaunche = await response.json();
-    return fetchedLaunche.filter(fetchedLaunche.flightNumber !== id);
   } catch (err) {
     return {
       ok: false,
