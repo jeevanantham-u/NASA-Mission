@@ -17,6 +17,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "jest":{
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "morgan": "^1.10.0"
   }
