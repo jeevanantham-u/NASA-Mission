@@ -14,7 +14,7 @@ describe('Launches API', () => {
   describe('Test GET /launches', () => {
     test('should respond 200', async () => {
       const response = await request(app)
-        .get('/launches')
+        .get('/v1/launches')
         .expect('Content-Type', /json/)
         .expect(200);
       // expect(response).toBe(200);
@@ -44,7 +44,7 @@ describe('Launches API', () => {
 
     test('It should respond 201 created', async () => {
       const response = await request(app)
-        .post('/launches')
+        .post('/v1/launches')
         .send(compliteLaunchData)
         .expect('Content-Type', /json/)
         .expect(201);
