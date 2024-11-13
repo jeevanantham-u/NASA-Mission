@@ -1,14 +1,14 @@
 const request = require('supertest');
 const app = require('../../app');
 const { mongoConnect, mongoDisconnect } = require('../../services/mongo');
-const{
+const {
   loadPlanetsData,
 } = require('../../models/planets.model');
 
 describe('Launches API', () => {
   beforeAll(async () => {
     await mongoConnect();
-    await loadPlanetsData();
+    loadPlanetsData();
   });
 
   afterAll(async () => {
@@ -60,16 +60,16 @@ describe('Launches API', () => {
       expect(response.body).toMatchObject(launchDataWithoutDate);
     });
 
-    // test('It should catch invalid dates', async () => {
-    //   const response = await request(app)
-    //     .post('/v1/launches')
-    //     .send(launchDataWithInvalidDate)
-    //     .expect('Content-Type', /json/)
-    //     .expect(400);
+    test('It should catch invalid dates', async () => {
+      const response = await request(app)
+        .post('/v1/launches')
+        .send(launchDataWithInvalidDate)
+        .expect('Content-Type', /json/)
+        .expect(400);
 
-    //   expect(response.body).toStrictEqual({
-    //     error: 'Invalid launch date',
-    //   });
-    // });
+      expect(response.body).toStrictEqual({
+        error: 'Invalid launch date',
+      });
+    });
   });
 });
